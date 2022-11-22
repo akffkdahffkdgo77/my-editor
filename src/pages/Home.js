@@ -82,64 +82,72 @@ export default function App() {
     }, []);
 
     return (
-        <Slate editor={editor} value={initialValue}>
-            <div>
-                <button
-                    type="button"
-                    onMouseDown={(event) => {
-                        event.preventDefault();
-                        CustomEditor.toggleBoldMark(editor);
-                    }}
-                >
-                    Bold
-                </button>
-                <button
-                    type="button"
-                    onMouseDown={(event) => {
-                        event.preventDefault();
-                        CustomEditor.toggleCodeBlock(editor);
-                    }}
-                >
-                    Code Block
-                </button>
-            </div>
-            <Editable
-                // Pass in the `renderElement` function.
-                renderElement={renderElement}
-                // Pass in the `renderLeaf` function.
-                renderLeaf={renderLeaf}
-                // Define a new handler which prints the key that was pressed.
-                onKeyDown={(event) => {
-                    if (!event.ctrlKey) {
-                        return;
-                    }
+        <div className="flex justify-center items-center w-full min-h-screen">
+            <main className="w-full max-w-3xl mx-auto min-h-[500px] h-full">
+                <Slate editor={editor} value={initialValue}>
+                    <div className="w-full h-50 p-2.5 border border-slate-300 flex justify-start items-center gap-5">
+                        <button
+                            className="w-5 h-5 [line-height:20px] border border-black font-bold uppercase"
+                            type="button"
+                            onMouseDown={(event) => {
+                                event.preventDefault();
+                                CustomEditor.toggleBoldMark(editor);
+                            }}
+                        >
+                            B
+                        </button>
+                        <button
+                            className="w-10 h-5 [line-height:20px] border border-black font-bold uppercase"
+                            type="button"
+                            onMouseDown={(event) => {
+                                event.preventDefault();
+                                CustomEditor.toggleCodeBlock(editor);
+                            }}
+                        >
+                            {`</>`}
+                        </button>
+                    </div>
+                    <div className="h-full min-h-[500px] border border-slate-300 p-5 border-t-0">
+                        <Editable
+                            // Pass in the `renderElement` function.
+                            renderElement={renderElement}
+                            // Pass in the `renderLeaf` function.
+                            renderLeaf={renderLeaf}
+                            // Define a new handler which prints the key that was pressed.
+                            onKeyDown={(event) => {
+                                if (!event.ctrlKey) {
+                                    return;
+                                }
 
-                    // Replace the `onKeyDown` logic with our new commands.
-                    switch (event.key) {
-                        case '`': {
-                            event.preventDefault();
-                            CustomEditor.toggleCodeBlock(editor);
-                            break;
-                        }
+                                // Replace the `onKeyDown` logic with our new commands.
+                                switch (event.key) {
+                                    case '`': {
+                                        event.preventDefault();
+                                        CustomEditor.toggleCodeBlock(editor);
+                                        break;
+                                    }
 
-                        case 'b': {
-                            event.preventDefault();
-                            CustomEditor.toggleBoldMark(editor);
-                            break;
-                        }
+                                    case 'b': {
+                                        event.preventDefault();
+                                        CustomEditor.toggleBoldMark(editor);
+                                        break;
+                                    }
 
-                        default:
-                            break;
-                    }
+                                    default:
+                                        break;
+                                }
 
-                    if (event.key === '&') {
-                        // Prevent the ampersand character from being inserted.
-                        event.preventDefault();
-                        // Execute the `insertText` method when the event occurs.
-                        editor.insertText('and');
-                    }
-                }}
-            />
-        </Slate>
+                                if (event.key === '&') {
+                                    // Prevent the ampersand character from being inserted.
+                                    event.preventDefault();
+                                    // Execute the `insertText` method when the event occurs.
+                                    editor.insertText('and');
+                                }
+                            }}
+                        />
+                    </div>
+                </Slate>
+            </main>
+        </div>
     );
 }

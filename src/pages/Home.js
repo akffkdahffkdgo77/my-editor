@@ -37,30 +37,128 @@ const CustomEditor = {
 const initialValue = [
     {
         type: 'paragraph',
-        children: [{ text: 'A line of text in a paragraph.' }]
+        children: [
+            { text: 'This is editable ' },
+            { text: 'rich', bold: true },
+            { text: ' text, ' },
+            { text: 'much', italic: true },
+            { text: ' better than a ' },
+            { text: '<textarea>', code: true },
+            { text: '!' }
+        ]
+    },
+    {
+        type: 'paragraph',
+        children: [
+            {
+                text: "Since it's rich text, you can do things like turn a selection of text "
+            },
+            { text: 'bold', bold: true },
+            {
+                text: ', or add a semantically rendered block quote in the middle of the page, like this:'
+            }
+        ]
+    },
+    {
+        type: 'block-quote',
+        children: [{ text: 'A wise quote.' }]
+    },
+    {
+        type: 'paragraph',
+        align: 'center',
+        children: [{ text: 'Try it out for yourself!' }]
     }
 ];
 
 // Define a React component renderer for our code blocks.
-const CodeElement = ({ attributes, children }) => {
-    return (
-        <pre {...attributes}>
-            <code>{children}</code>
-        </pre>
-    );
-};
+// const CodeElement = ({ attributes, children }) => {
+//     return (
+//         <pre {...attributes}>
+//             <code>{children}</code>
+//         </pre>
+//     );
+// };
 
-const DefaultElement = ({ attributes, children }) => {
-    return <p {...attributes}>{children}</p>;
-};
+// const DefaultElement = ({ attributes, children }) => {
+//     return <p {...attributes}>{children}</p>;
+// };
 
 // Define a React component to render leaves with bold text.
-const Leaf = ({ leaf, attributes, children }) => {
-    return (
-        <span {...attributes} style={{ fontWeight: leaf.bold ? 'bold' : 'normal' }}>
-            {children}
-        </span>
-    );
+// const Leaf = ({ leaf, attributes, children }) => {
+//     return (
+//         <span {...attributes} style={{ fontWeight: leaf.bold ? 'bold' : 'normal' }}>
+//             {children}
+//         </span>
+//     );
+// };
+
+// Define a React component renderer for our code blocks.
+const Element = ({ attributes, children, element }) => {
+    const style = { textAlign: element.align };
+    switch (element.type) {
+        case 'block-quote':
+            return (
+                <blockquote style={style} {...attributes}>
+                    {children}
+                </blockquote>
+            );
+        case 'bulleted-list':
+            return (
+                <ul style={style} {...attributes}>
+                    {children}
+                </ul>
+            );
+        case 'heading-one':
+            return (
+                <h1 style={style} {...attributes}>
+                    {children}
+                </h1>
+            );
+        case 'heading-two':
+            return (
+                <h2 style={style} {...attributes}>
+                    {children}
+                </h2>
+            );
+        case 'list-item':
+            return (
+                <li style={style} {...attributes}>
+                    {children}
+                </li>
+            );
+        case 'numbered-list':
+            return (
+                <ol style={style} {...attributes}>
+                    {children}
+                </ol>
+            );
+        default:
+            return (
+                <p style={style} {...attributes}>
+                    {children}
+                </p>
+            );
+    }
+};
+
+const Leaf = ({ attributes, children, leaf }) => {
+    if (leaf.bold) {
+        children = <strong>{children}</strong>;
+    }
+
+    if (leaf.code) {
+        children = <code>{children}</code>;
+    }
+
+    if (leaf.italic) {
+        children = <em>{children}</em>;
+    }
+
+    if (leaf.underline) {
+        children = <u>{children}</u>;
+    }
+
+    return <span {...attributes}>{children}</span>;
 };
 
 export default function App() {
@@ -68,18 +166,21 @@ export default function App() {
     const [editor] = useState(() => withReact(createEditor()));
     // Render the Slate context.
 
-    const renderElement = useCallback((props) => {
-        switch (props.element.type) {
-            case 'code':
-                return <CodeElement {...props} />;
-            default:
-                return <DefaultElement {...props} />;
-        }
-    }, []);
+    // const renderElement = useCallback((props) => {
+    //     switch (props.element.type) {
+    //         case 'code':
+    //             return <CodeElement {...props} />;
+    //         default:
+    //             return <DefaultElement {...props} />;
+    //     }
+    // }, []);
 
-    const renderLeaf = useCallback((props) => {
-        return <Leaf {...props} />;
-    }, []);
+    // const renderLeaf = useCallback((props) => {
+    //     return <Leaf {...props} />;
+    // }, []);
+
+    const renderElement = useCallback((props) => <Element {...props} />, []);
+    const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
     return (
         <div className="flex justify-center items-center w-full min-h-screen">

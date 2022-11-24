@@ -3,11 +3,22 @@
     "version": "1.0.0",
     "license": "MIT",
     "dependencies": {
+        "@emoji-mart/data": "^1.0.8",
+        "@emoji-mart/react": "^1.0.1",
+        "@fortawesome/fontawesome-svg-core": "^6.2.1",
+        "@fortawesome/free-regular-svg-icons": "^6.2.1",
+        "@fortawesome/free-solid-svg-icons": "^6.2.1",
+        "@fortawesome/react-fontawesome": "^0.2.0",
+        "emoji-mart": "^5.3.3",
+        "emojis-list": "^3.0.0",
+        "escape-html": "^1.0.3",
+        "is-hotkey": "^0.2.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router-dom": "^6.4.3",
         "react-scripts": "^5.0.1",
         "slate": "^0.86.0",
+        "slate-hyperscript": "^0.77.0",
         "slate-react": "^0.86.0"
     },
     "scripts": {

@@ -1,28 +1,31 @@
-# REACT TYPESCRIPT TEMPLATE
+# My Editor
 
-## ABOUT
+## Project Description
 
-React-TypeScript Template.  
-Demonstrating how I use REACT.js with TYPESCRIPT
+Clone Coding Rich Text Editor
 
-## TODO
+## v1.0.0
 
--   [ ] Change Folder Structure
--   [ ] Add Folder Tree in README.md
--   [ ] Create Sample Page
+-   Bold, Italic, Underline, Strike out, Text Align
+-   Heading (1, 2, 3, 4)
+-   Ordered, Unordered List (ol, ul)
+-   Block Quote
+-   Code Block
+-   Checkbox
+-   Emoji
+-   Image
+-   Embed
 
-## ACKNOWLEDGMENT
+## References
 
-### NPM Packages
+-   Slate Examples
 
--   react v18
--   react-query v4
--   react-router-dom v6
--   tailwindcss
--   typescript
+    -   https://github.com/ianstormtaylor/slate/blob/main/site/examples/richtext.tsx
+    -   https://github.com/ianstormtaylor/slate/blob/main/site/examples/check-lists.tsx
+    -   https://github.com/ianstormtaylor/slate/blob/main/site/examples/embeds.tsx
+    -   https://github.com/ianstormtaylor/slate/blob/main/site/examples/iframe.tsx
+    -   https://github.com/ianstormtaylor/slate/blob/main/site/examples/images.tsx
+    -   https://github.com/ianstormtaylor/slate/blob/main/site/examples/hovering-toolbar.tsx
 
-### Code Convention
-
--   ESLint - Airbnb
--   ESLint + TypeScript
--   Prettier
+-   Slate serializing, deserializing
+    -   https://docs.slatejs.org/concepts/10-serializing#deserializing

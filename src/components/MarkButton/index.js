@@ -6,6 +6,7 @@ import { CustomEditor } from 'utils/editor';
 
 export default function MarkButton({ format, icon }) {
     const editor = useSlate();
+
     return (
         <button
             type="button"

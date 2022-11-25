@@ -1,4 +1,5 @@
 import escapeHTML from 'escape-html';
+import { Text } from 'slate';
 import { jsx } from 'slate-hyperscript';
 
 export const serialize = (node) => {

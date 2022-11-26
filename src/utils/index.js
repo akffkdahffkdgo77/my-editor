@@ -1,36 +1,58 @@
 export const INITIAL_VALUE = [
     {
-        type: 'paragraph',
-        children: [
-            { text: 'This is editable ' },
-            { text: 'rich', bold: true },
-            { text: ' text, ' },
-            { text: 'much', italic: true },
-            { text: ' better than a ' },
-            { text: '<textarea>', code: true },
-            { text: '!' }
-        ]
+        type: 'heading-one',
+        children: [{ text: 'This is Heading 1.' }]
+    },
+    {
+        type: 'heading-two',
+        children: [{ text: 'This is Heading 2.' }]
+    },
+    {
+        type: 'heading-three',
+        children: [{ text: 'This is Heading 3.' }]
+    },
+    {
+        type: 'heading-four',
+        children: [{ text: 'This is Heading 4.' }]
     },
     {
         type: 'paragraph',
-        children: [
-            {
-                text: "Since it's rich text, you can do things like turn a selection of text "
-            },
-            { text: 'bold', bold: true },
-            {
-                text: ', or add a semantically rendered block quote in the middle of the page, like this:'
-            }
-        ]
+        children: [{ text: 'This is bold.', bold: true }]
+    },
+    {
+        type: 'paragraph',
+        children: [{ text: 'This is underline', underline: true }]
+    },
+    {
+        type: 'paragraph',
+        children: [{ text: 'This is italic.', italic: true }]
+    },
+    {
+        type: 'paragraph',
+        children: [{ text: 'This is strike-through.', strikeThrough: true }]
+    },
+    {
+        type: 'paragraph',
+        children: [{ text: 'This is code block.', code: true }]
     },
     {
         type: 'block-quote',
-        children: [{ text: 'A wise quote.' }]
+        children: [{ text: 'This is quote.' }]
+    },
+    {
+        type: 'paragraph',
+        align: 'left',
+        children: [{ text: 'Align Left' }]
     },
     {
         type: 'paragraph',
         align: 'center',
-        children: [{ text: 'Try it out for yourself!' }]
+        children: [{ text: 'Align Center' }]
+    },
+    {
+        type: 'paragraph',
+        align: 'right',
+        children: [{ text: 'Align Right' }]
     },
     {
         type: 'check-list-item',

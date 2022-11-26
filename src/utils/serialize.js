@@ -4,15 +4,29 @@ import { jsx } from 'slate-hyperscript';
 
 export const serialize = (node) => {
     if (Text.isText(node)) {
+        // Custom Formatting
         let string = escapeHTML(node.text);
+        if (node.code) {
+            string = `<pre><code>${string}</code></pre>`;
+        }
         if (node.bold) {
             string = `<strong>${string}</strong>`;
+        }
+        if (node.italic) {
+            string = `<em>${string}</em>`;
+        }
+        if (node.underline) {
+            string = `<u>${string}</u>`;
+        }
+        if (node.strikeThrough) {
+            string = `<del>${string}</del>`;
         }
         return string;
     }
 
     const children = node.children?.map((n) => serialize(n)).join('');
 
+    // Custom Elements
     switch (node.type) {
         case 'quote':
             return `<blockquote><p>${children}</p></blockquote>`;
@@ -36,9 +50,19 @@ export const deserialize = (el, markAttributes = {}) => {
     const nodeAttributes = { ...markAttributes };
 
     // define attributes for text nodes
+    // Custom Formatting
     switch (el.nodeName) {
-        case 'strong':
+        case 'STRONG':
             nodeAttributes.bold = true;
+            break;
+        case 'EM':
+            nodeAttributes.italic = true;
+            break;
+        case 'U':
+            nodeAttributes.underline = true;
+            break;
+        case 'DEL':
+            nodeAttributes.strikeThrough = true;
             break;
         default:
             break;
@@ -52,6 +76,7 @@ export const deserialize = (el, markAttributes = {}) => {
         children.push(jsx('text', nodeAttributes, ''));
     }
 
+    // Custom Element
     switch (el.nodeName) {
         case 'BODY':
             return jsx('fragment', {}, children);

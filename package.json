@@ -18,6 +18,7 @@
         "react-router-dom": "^6.4.3",
         "react-scripts": "^5.0.1",
         "slate": "^0.86.0",
+        "slate-history": "^0.86.0",
         "slate-hyperscript": "^0.77.0",
         "slate-react": "^0.86.0"
     },

@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
+import { faListCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSlate } from 'slate-react';
 
-import { CustomEditor } from 'utils/editor';
+import CustomEditor from 'utils/editor';
 
-export default function BlockButton({ format, icon }) {
+export default function ChecklistButton() {
     const editor = useSlate();
 
     return (
@@ -13,10 +13,10 @@ export default function BlockButton({ format, icon }) {
             className="block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase"
             onMouseDown={(event) => {
                 event.preventDefault();
-                CustomEditor.toggleBlock(editor, format);
+                CustomEditor.toggleChecklist(editor);
             }}
         >
-            <FontAwesomeIcon icon={icon} />
+            <FontAwesomeIcon icon={faListCheck} />
         </button>
     );
 }

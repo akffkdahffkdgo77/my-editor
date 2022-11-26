@@ -3,15 +3,16 @@
 import { Transforms } from 'slate';
 import { ReactEditor, useReadOnly, useSlateStatic } from 'slate-react';
 
-export default function CheckList({ attributes, children, element }) {
+export default function CheckListItem({ attributes, children, element }) {
     const editor = useSlateStatic();
     const readOnly = useReadOnly();
     const { checked } = element;
 
     return (
-        <div {...attributes} className="flex items-center">
-            <span className="mr-[5px]" contentEditable={false}>
+        <li className="flex items-center" {...attributes}>
+            <div className="mr-2.5 flex items-center" contentEditable={false}>
                 <input
+                    className="w-[18px] h-[18px]"
                     type="checkbox"
                     checked={checked}
                     onChange={(event) => {
@@ -22,10 +23,10 @@ export default function CheckList({ attributes, children, element }) {
                         Transforms.setNodes(editor, newProperties, { at: path });
                     }}
                 />
-            </span>
-            <span contentEditable={!readOnly} suppressContentEditableWarning className={`${checked ? 'line-through opacity-70' : ''} flex-1 focus:outline-none`}>
+            </div>
+            <span contentEditable={!readOnly} suppressContentEditableWarning className={`${checked ? 'line-through opacity-70' : ''} text-[16px] flex-1 focus:outline-none`}>
                 {children}
             </span>
-        </div>
+        </li>
     );
 }

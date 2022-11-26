@@ -6,7 +6,7 @@ import { faIcons } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSlate } from 'slate-react';
 
-import { CustomEditor } from 'utils/editor';
+import CustomEditor from 'utils/editor';
 
 export default function EmojiButton() {
     const editor = useSlate();

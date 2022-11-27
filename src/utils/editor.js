@@ -38,6 +38,15 @@ const CustomEditor = {
 
         return !!match;
     },
+    // Add Image
+    toggleImage(editor, url) {
+        // 이미지 아래로 p를 추가해서 계속해서 text를 입력할 수 있도록
+        const newProperties = [
+            { type: 'image', url, children: [] },
+            { type: 'paragraph', children: [{ text: '' }] }
+        ];
+        Transforms.insertNodes(editor, newProperties);
+    },
     // Add Emoji
     toggleEmoji(editor, emoji) {
         Transforms.insertText(editor, emoji);

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import CheckListItem from 'components/CheckListItem';
+import Image from 'components/Image';
 
 // Slate DOC -> https://docs.slatejs.org/walkthroughs/03-defining-custom-elements
 // Define a React component renderer.
@@ -65,6 +66,8 @@ const Element = (props) => {
             );
         case 'check-list-item':
             return <CheckListItem {...props} />;
+        case 'image':
+            return <Image {...props} />;
         default:
             return (
                 <p className="paragraph" style={style} {...attributes}>

@@ -11,11 +11,12 @@ import { HOTKEYS } from 'utils';
 import withChecklist from 'utils/checklist';
 import CustomEditor from 'utils/editor';
 import Element from 'utils/element';
+import withImages from 'utils/image';
 import Leaf from 'utils/leaf';
 import { serialize } from 'utils/serialize';
 
 export default function Editor() {
-    const [editor] = useState(() => withChecklist(withHistory(withReact(createEditor()))));
+    const [editor] = useState(() => withImages(withChecklist(withHistory(withReact(createEditor())))));
     const renderElement = useCallback((props) => <Element {...props} />, []);
     const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 

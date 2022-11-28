@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import isHotkey from 'is-hotkey';
-import { createEditor } from 'slate';
+import isHotkey, { isKeyHotkey } from 'is-hotkey';
+import { createEditor, Range, Transforms } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 
@@ -12,11 +12,12 @@ import withChecklist from 'utils/checklist';
 import CustomEditor from 'utils/editor';
 import Element from 'utils/element';
 import withImages from 'utils/image';
+import withInlines from 'utils/inline';
 import Leaf from 'utils/leaf';
 import { serialize } from 'utils/serialize';
 
 export default function Editor() {
-    const [editor] = useState(() => withImages(withChecklist(withHistory(withReact(createEditor())))));
+    const [editor] = useState(() => withInlines(withImages(withChecklist(withHistory(withReact(createEditor()))))));
     const renderElement = useCallback((props) => <Element {...props} />, []);
     const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
@@ -46,6 +47,28 @@ export default function Editor() {
                         autoFocus
                         // Define a new handler which prints the key that was pressed.
                         onKeyDown={(event) => {
+                            // References : https://github.com/ianstormtaylor/slate/blob/main/site/examples/inlines.tsx
+                            // Default left/right behavior is unit:'character'.
+                            // This fails to distinguish between two cursor positions, such as
+                            // <inline>foo<cursor/></inline> vs <inline>foo</inline><cursor/>.
+                            // Here we modify the behavior to unit:'offset'.
+                            // This lets the user step into and out of the inline without stepping over characters.
+                            // You may wish to customize this further to only use unit:'offset' in specific cases.
+                            const { selection } = editor;
+                            if (selection && Range.isCollapsed(selection)) {
+                                const { nativeEvent } = event;
+                                if (isKeyHotkey('left', nativeEvent)) {
+                                    event.preventDefault();
+                                    Transforms.move(editor, { unit: 'offset', reverse: true });
+                                    return;
+                                }
+                                if (isKeyHotkey('right', nativeEvent)) {
+                                    event.preventDefault();
+                                    Transforms.move(editor, { unit: 'offset' });
+                                    return;
+                                }
+                            }
+
                             for (const hotkey in HOTKEYS) {
                                 if (isHotkey(hotkey, event)) {
                                     event.preventDefault();

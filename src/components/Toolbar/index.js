@@ -12,13 +12,13 @@ import {
     faCode,
     faHeading,
     faStrikethrough,
-    faLink,
     faVideo
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { BlockButton, EmojiButton, MarkButton, ChecklistButton } from 'components/Buttons';
 import ImageButton from 'components/Buttons/ImageButton';
+import LinkButton from 'components/Buttons/LinkButton';
 
 export default function Toolbar() {
     return (
@@ -45,9 +45,7 @@ export default function Toolbar() {
                 <BlockButton format="bulleted-list" icon={faListUl} />
                 <ChecklistButton />
                 <ImageButton />
-                <button type="button">
-                    <FontAwesomeIcon icon={faLink} />
-                </button>
+                <LinkButton />
                 <button type="button">
                     <FontAwesomeIcon icon={faVideo} />
                 </button>

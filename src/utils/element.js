@@ -2,6 +2,7 @@
 
 import CheckListItem from 'components/CheckListItem';
 import Image from 'components/Image';
+import Link from 'components/Link';
 
 // Slate DOC -> https://docs.slatejs.org/walkthroughs/03-defining-custom-elements
 // Define a React component renderer.
@@ -68,6 +69,8 @@ const Element = (props) => {
             return <CheckListItem {...props} />;
         case 'image':
             return <Image {...props} />;
+        case 'link':
+            return <Link {...props} />;
         default:
             return (
                 <p className="paragraph" style={style} {...attributes}>

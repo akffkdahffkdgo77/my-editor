@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { Editor, Transforms, Element as SlateElement } from 'slate'; // Import the Slate editor factory.
+import { Editor, Transforms, Element as SlateElement, Range } from 'slate'; // Import the Slate editor factory.
 
 import { LIST_TYPES, TEXT_ALIGN_TYPES } from 'utils';
 
@@ -37,6 +37,46 @@ const CustomEditor = {
         );
 
         return !!match;
+    },
+    isLinkActive(editor) {
+        const { selection } = editor;
+        if (!selection) return false;
+
+        const [link] = Editor.nodes(editor, {
+            match: (n) => !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link'
+        });
+
+        return !!link;
+    },
+    unToggleLink(editor) {
+        Transforms.unwrapNodes(editor, {
+            match: (n) => !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
+            split: true
+        });
+    },
+    // Add Link
+    toggleLink(editor, url) {
+        const isActive = CustomEditor.isLinkActive(editor);
+        if (isActive) {
+            Transforms.unwrapNodes(editor, {
+                match: (n) => !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link'
+            });
+        }
+
+        const { selection } = editor;
+        const isCollapsed = selection && Range.isCollapsed(selection);
+        const link = {
+            type: 'link',
+            url,
+            children: isCollapsed ? { text: url } : []
+        };
+
+        if (isCollapsed) {
+            Transforms.insertNodes(editor, link);
+        } else {
+            Transforms.wrapNodes(editor, link, { split: true });
+            Transforms.collapse(editor, { edge: 'end' });
+        }
     },
     // Add Image
     toggleImage(editor, url) {

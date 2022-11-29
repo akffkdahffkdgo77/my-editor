@@ -12,12 +12,18 @@ Clone Coding Rich Text Editor.
     -   Code Block
 
 -   Custom Block
+
     -   Heading (1, 2, 3, 4)
     -   Numbered, Bulleted List (ol, ul)
     -   Block Quote
     -   Checkbox
     -   Emoji
     -   Image
+
+    ## v.1.0.1 (TO-BE)
+
+-   Custom Block
+
     -   Embed
 
 ## References

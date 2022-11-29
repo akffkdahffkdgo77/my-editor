@@ -11,10 +11,8 @@ import {
     faUnderline,
     faCode,
     faHeading,
-    faStrikethrough,
-    faVideo
+    faStrikethrough
 } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { BlockButton, EmojiButton, MarkButton, ChecklistButton } from 'components/Buttons';
 import ImageButton from 'components/Buttons/ImageButton';
@@ -46,9 +44,6 @@ export default function Toolbar() {
                 <ChecklistButton />
                 <ImageButton />
                 <LinkButton />
-                <button type="button">
-                    <FontAwesomeIcon icon={faVideo} />
-                </button>
             </div>
         </div>
     );

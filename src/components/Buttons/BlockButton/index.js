@@ -10,11 +10,12 @@ export default function BlockButton({ format, icon }) {
     return (
         <button
             type="button"
-            className="block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase"
+            title={`${format} button`}
             onMouseDown={(event) => {
                 event.preventDefault();
                 CustomEditor.toggleBlock(editor, format);
             }}
+            className={`${CustomEditor.isBlockActive(editor, format) ? 'bg-blue-300' : ''} block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase`}
         >
             <FontAwesomeIcon icon={icon} />
         </button>

@@ -21,11 +21,12 @@ export default function LinkButton() {
         <div className="relative flex gap-2.5">
             <button
                 type="button"
-                className="block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase"
+                title="link button"
                 onMouseDown={(event) => {
                     event.preventDefault();
                     setShow((prev) => !prev);
                 }}
+                className={`${show ? 'bg-red-300' : ''} block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase`}
             >
                 <FontAwesomeIcon icon={faLink} />
             </button>

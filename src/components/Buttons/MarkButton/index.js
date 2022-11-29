@@ -10,7 +10,7 @@ export default function MarkButton({ format, icon }) {
     return (
         <button
             type="button"
-            className="block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase"
+            className={`${CustomEditor.isMarkActive(editor, format) ? 'bg-pink-300' : ''} block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase`}
             onMouseDown={(event) => {
                 event.preventDefault();
                 CustomEditor.toggleMark(editor, format);

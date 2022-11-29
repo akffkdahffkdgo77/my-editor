@@ -27,7 +27,12 @@ export default function EmojiButton() {
 
     return (
         <div className="relative">
-            <button className="block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase" type="button" onClick={() => setShowEmoji((prev) => !prev)}>
+            <button
+                type="button"
+                title="emoji button"
+                onClick={() => setShowEmoji((prev) => !prev)}
+                className={`${showEmoji ? 'bg-yellow-300' : ''} block w-[40px] h-[30px] [line-height:30px] border border-black font-bold uppercase`}
+            >
                 <FontAwesomeIcon icon={faIcons} />
             </button>
             {showEmoji && (

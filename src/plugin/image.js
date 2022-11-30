@@ -1,5 +1,6 @@
 import CustomEditor from 'utils/editor';
 
+// A plugin is simply a function that takes an Editor object and returns it after it has augmented it in some way.
 const withImages = (editor) => {
     const { insertData, isVoid } = editor;
 

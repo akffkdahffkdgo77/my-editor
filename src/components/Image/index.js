@@ -11,6 +11,7 @@ export default function Image({ attributes, children, element }) {
     const selected = useSelected();
     const focused = useFocused();
 
+    // TODO: Bug fix
     return (
         <div {...attributes}>
             {children}
@@ -18,8 +19,10 @@ export default function Image({ attributes, children, element }) {
                 <img src={element.url} alt="custom img" className={`block max-w-full max-h-80 ${selected && focused ? 'shadow-md' : ''}`} />
                 <button
                     type="button"
-                    onClick={() => Transforms.removeNodes(editor, { at: path })}
-                    className={`${selected && focused ? 'flex' : 'hidden'} p-[5px] rounded-sm absolute top-2 left-2 bg-slate-50`}
+                    onClick={() => {
+                        Transforms.removeNodes(editor, { at: path });
+                    }}
+                    className={`${selected && focused ? 'flex' : 'hidden'} z-50 p-[30px] rounded-sm absolute top-2 left-2 bg-slate-50`}
                 >
                     <FontAwesomeIcon className="w-2.5 h-2.5" icon={faTrash} />
                 </button>

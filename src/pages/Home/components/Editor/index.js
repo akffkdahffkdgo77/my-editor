@@ -6,13 +6,13 @@ import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 
 import Toolbar from 'components/Toolbar';
+import withChecklist from 'plugin/checklist';
+import withImages from 'plugin/image';
+import withInlines from 'plugin/inline';
 import { HOTKEYS } from 'utils';
 
-import withChecklist from 'utils/checklist';
 import CustomEditor from 'utils/editor';
 import Element from 'utils/element';
-import withImages from 'utils/image';
-import withInlines from 'utils/inline';
 import Leaf from 'utils/leaf';
 import { serialize } from 'utils/serialize';
 

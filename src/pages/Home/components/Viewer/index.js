@@ -3,7 +3,8 @@ import { useCallback, useState } from 'react';
 import { createEditor } from 'slate';
 import { Editable, Slate, withReact } from 'slate-react';
 
-import withChecklist from 'utils/checklist';
+import withChecklist from 'plugin/checklist';
+
 import Element from 'utils/element';
 import Leaf from 'utils/leaf';
 import { deserialize } from 'utils/serialize';

@@ -1,16 +1,16 @@
-/* eslint-disable no-unused-vars */
-import { Editor, Transforms, Element as SlateElement, Range } from 'slate'; // Import the Slate editor factory.
+import { Editor, Transforms, Element as SlateElement, Range } from 'slate';
 
 import { LIST_TYPES, TEXT_ALIGN_TYPES } from 'utils';
 
+// Helper Functions
 // Define our own custom set of helpers.
 const CustomEditor = {
-    // Mark Button Active?
+    // Mark Button Active? - Leaf Element
     isMarkActive(editor, format) {
         const marks = Editor.marks(editor);
         return marks ? marks[format] === true : false;
     },
-    // Block Button Active?
+    // Block Button Active? - Block Element
     isBlockActive(editor, format, blockType = 'type') {
         const { selection } = editor;
         if (!selection) return false;
@@ -38,6 +38,7 @@ const CustomEditor = {
 
         return !!match;
     },
+    // Link Button Active?
     isLinkActive(editor) {
         const { selection } = editor;
         if (!selection) return false;
@@ -48,12 +49,7 @@ const CustomEditor = {
 
         return !!link;
     },
-    unToggleLink(editor) {
-        Transforms.unwrapNodes(editor, {
-            match: (n) => !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
-            split: true
-        });
-    },
+
     // Add Link
     toggleLink(editor, url) {
         const isActive = CustomEditor.isLinkActive(editor);
@@ -72,11 +68,38 @@ const CustomEditor = {
         };
 
         if (isCollapsed) {
+            // Transforms.insertNodes
+            //  -> Atomically inserts nodes at the specified location in the document.
+            //  -> If no location is specified, inserts at the current selection.
+            //  -> If there is no selection, inserts at the end of the document.
             Transforms.insertNodes(editor, link);
         } else {
+            // Transforms.wrapNodes
+            //  -> Wrap nodes at the specified location in the element container.
+            //  -> If no location is specified, wrap the selection.
+            //  -> split: true
+            //      ->  it's okay to split a node in order to wrap the location
+            //      ->  if ipsum was selected in a Text node with lorem ipsum dolar,
+            //      ->  split: true would wrap the word ipsum only, resulting in splitting the Text node.
             Transforms.wrapNodes(editor, link, { split: true });
+            // -> 선택된 텍스트를 a tag로 wrap
+            // -> 만약 선택된 텍스트가 없다면 마지막 커서 위치에 a tag 추가
+
+            //  Transforms.collapse
+            //  -> Collapse the selection to a single point.
             Transforms.collapse(editor, { edge: 'end' });
         }
+    },
+    // Deactivate Link Button
+    unToggleLink(editor) {
+        //  Transforms.unwrapNodes
+        //  -> Unwrap nodes at the specified location.
+        //  -> If necessary, the parent node is split.
+        //  -> If no location is specified, use the selection.
+        Transforms.unwrapNodes(editor, {
+            match: (n) => !Editor.isEditor(n) && SlateElement.isElement(n) && n.type === 'link',
+            split: true
+        });
     },
     // Add Image
     toggleImage(editor, url) {
@@ -89,6 +112,9 @@ const CustomEditor = {
     },
     // Add Emoji
     toggleEmoji(editor, emoji) {
+        // Transform.insertText
+        //  -> Insert a string of text at the specified location in the document.
+        //  -> If no location is specified, insert at the current selection.
         Transforms.insertText(editor, emoji);
     },
     // Add Checklist
@@ -105,7 +131,11 @@ const CustomEditor = {
 
         let newProperties;
         if (!isActive) {
+            // check list item element를 만듬
+            // 그 다음에 그걸 check list element로 감싸기
             newProperties = { type: 'check-list-item' };
+            //  Transforms.setNodes
+            //  -> Set properties of nodes at the specified location.
             Transforms.setNodes(editor, newProperties);
             const block = { type: 'check-list', children: [] };
             Transforms.wrapNodes(editor, block);

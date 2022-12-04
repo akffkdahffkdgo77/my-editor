@@ -1,5 +1,7 @@
 # My Editor
 
+<img width="1449" alt="스크린샷 2022-12-04 오후 5 13 52" src="https://user-images.githubusercontent.com/52883505/205481626-0b11cb91-7a54-4c3a-a81b-87b719cbf933.png">
+
 ## Weekly Clone Coding
 
 Part 7 of [Weekly Clone Coding Challenge](https://github.com/namiein/weekly-clone-coding)

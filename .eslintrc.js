@@ -33,41 +33,6 @@ module.exports = {
                         position: 'before'
                     },
                     {
-                        pattern: '@mui/**/*',
-                        group: 'external',
-                        position: 'after'
-                    },
-                    {
-                        pattern: 'slices/**',
-                        group: 'internal',
-                        position: 'before'
-                    },
-                    {
-                        pattern: 'hooks/**',
-                        group: 'internal',
-                        position: 'before'
-                    },
-                    {
-                        pattern: 'hooks/**',
-                        group: 'internal',
-                        position: 'before'
-                    },
-                    {
-                        pattern: 'assets/**',
-                        group: 'internal',
-                        position: 'after'
-                    },
-                    {
-                        pattern: 'configs/**',
-                        group: 'internal',
-                        position: 'after'
-                    },
-                    {
-                        pattern: 'constants/**',
-                        group: 'internal',
-                        position: 'after'
-                    },
-                    {
                         pattern: 'styles/**',
                         group: 'internal',
                         position: 'after'

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Transforms } from 'slate';
@@ -16,7 +15,14 @@ export default function Image({ attributes, children, element }) {
             {children}
             <div contentEditable={false} className="relative">
                 <img src={element.url} alt="custom img" className={`block max-w-full max-h-80 ${selected && focused ? 'shadow-md' : ''}`} />
-                <button type="button" onClick={() => Transforms.removeNodes(editor, { at: path })} className="flex opacity-75 z-50 p-[5px] rounded-sm absolute top-2 left-2 bg-slate-50">
+                <button
+                    type="button"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        Transforms.removeNodes(editor, { at: path });
+                    }}
+                    className="flex opacity-75 z-50 p-[5px] rounded-sm absolute top-2 left-2 bg-slate-50"
+                >
                     <FontAwesomeIcon className="w-2.5 h-2.5" icon={faTrash} />
                 </button>
             </div>

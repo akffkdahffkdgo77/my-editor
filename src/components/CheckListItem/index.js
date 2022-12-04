@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { Transforms } from 'slate';
 import { ReactEditor, useReadOnly, useSlateStatic } from 'slate-react';
 

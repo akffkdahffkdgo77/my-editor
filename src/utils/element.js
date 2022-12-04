@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import CheckListItem from 'components/CheckListItem';
 import Image from 'components/Image';
 import Link from 'components/Link';

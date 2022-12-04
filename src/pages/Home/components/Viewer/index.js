@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useCallback, useEffect, useState } from 'react';
 
 import { createEditor } from 'slate';
@@ -11,7 +10,6 @@ import deserialize from 'utils/deserialize';
 import Element from 'utils/element';
 import Leaf from 'utils/leaf';
 
-// eslint-disable-next-line no-unused-vars
 function initialValue(html) {
     // HTML -> Blocks
     const document = new DOMParser().parseFromString(html, 'text/html');

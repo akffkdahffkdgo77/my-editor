@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

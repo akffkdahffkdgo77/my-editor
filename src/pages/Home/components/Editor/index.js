@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useCallback, useState } from 'react';
 
 import isHotkey, { isKeyHotkey } from 'is-hotkey';
@@ -8,9 +7,9 @@ import { Editable, Slate, withReact } from 'slate-react';
 
 import Toolbar from 'components/Toolbar';
 import { withChecklists, withImages, withInlines } from 'plugins';
-import { HOTKEYS } from 'utils/constants';
-
 import CustomEditor from 'utils';
+
+import { HOTKEYS } from 'utils/constants';
 import Element from 'utils/element';
 import Leaf from 'utils/leaf';
 

@@ -78,6 +78,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'prefer-promise-reject-errors': 'off',
         'global-require': 'off',
-        'no-restricted-syntax': 'off'
+        'no-restricted-syntax': 'off',
+        'react/prop-types': 'off'
     }
 };

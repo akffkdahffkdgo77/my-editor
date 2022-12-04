@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 // Slate DOC -> https://docs.slatejs.org/walkthroughs/04-applying-custom-formatting
 // Define a React component to render leaves.
 const Leaf = ({ attributes, children, leaf }) => {

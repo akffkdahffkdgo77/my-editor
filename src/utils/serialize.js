@@ -38,7 +38,7 @@ const serialize = (node) => {
         case 'block-quote':
             return `<blockquote>${children}</blockquote>`;
         case 'numbered-list':
-            return `<ul className="orderedList>${children}</ol>`;
+            return `<ol>${children}</ol>`;
         case 'bulleted-list':
             return `<ul>${children}</ul>`;
         case 'list-item':

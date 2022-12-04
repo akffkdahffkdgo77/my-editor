@@ -43,7 +43,7 @@ const Element = (props) => {
             );
         case 'numbered-list':
             return (
-                <ol className="orderedList" style={style} {...attributes}>
+                <ol className="numberedList" style={style} {...attributes}>
                     {children}
                 </ol>
             );

@@ -52,7 +52,7 @@ const deserialize = (el, markAttributes = {}) => {
         case 'H4':
             return jsx('element', { type: 'heading-four' }, children);
         case 'BLOCKQUOTE':
-            return jsx('element', { type: 'quote' }, children);
+            return jsx('element', { type: 'block-quote' }, children);
         case 'UL':
             return jsx('element', { type: 'bulleted-list' }, children);
         case 'OL':

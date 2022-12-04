@@ -27,13 +27,14 @@
 }
 
 .quote {
+    color: gray;
     border-left: 2px solid gray;
     padding: 10px 20px;
     background-color: rgb(246, 246, 246);
     font-weight: 500;
 }
 
-.orderedList {
+.numberedList {
     list-style-type: decimal;
     padding: 5px 20px;
 }

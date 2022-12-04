@@ -10,7 +10,6 @@
         "@fortawesome/free-solid-svg-icons": "^6.2.1",
         "@fortawesome/react-fontawesome": "^0.2.0",
         "emoji-mart": "^5.3.3",
-        "emojis-list": "^3.0.0",
         "escape-html": "^1.0.3",
         "is-hotkey": "^0.2.0",
         "is-url": "^1.2.4",

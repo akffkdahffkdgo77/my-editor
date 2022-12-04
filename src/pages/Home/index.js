@@ -5,7 +5,7 @@ import Viewer from 'pages/Home/components/Viewer';
 
 import serialize from 'utils/serialize';
 
-export default function App() {
+export default function Home() {
     const [html, setHTML] = useState('<p></p>');
 
     const onChange = (event) => setHTML(event.map((ele) => serialize(ele)));

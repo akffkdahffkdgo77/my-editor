@@ -1,32 +1,39 @@
-import { useCallback, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useCallback, useEffect, useState } from 'react';
 
 import { createEditor } from 'slate';
+import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 
-import withChecklist from 'plugin/checklist';
+import { withChecklists, withImages, withInlines } from 'plugins';
 
+import deserialize from 'utils/deserialize';
 import Element from 'utils/element';
 import Leaf from 'utils/leaf';
-import { deserialize } from 'utils/serialize';
 
-function initialValue() {
+// eslint-disable-next-line no-unused-vars
+function initialValue(html) {
     // HTML -> Blocks
-    const html = '<p><strong>abcd</strong></p><p><u>efg</u></p><p><em>hi</em></p><p>test</p> <p><strong>abcd</strong> <u>ef</u><u><em>g</em></u><em>iffff</em></p>';
     const document = new DOMParser().parseFromString(html, 'text/html');
-    // console.log('document', deserialize(document.body));
-
     return deserialize(document.body);
 }
 
-export default function Viewer() {
-    const [viewer] = useState(() => withChecklist(withReact(createEditor())));
+export default function Viewer({ html }) {
+    const [editor] = useState(() => withInlines(withImages(withChecklists(withHistory(withReact(createEditor()))))));
 
     const renderElement = useCallback((props) => <Element {...props} />, []);
     const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
+    useEffect(() => {
+        if (html) {
+            editor.children = initialValue(typeof html === 'string' ? html : html.join(''));
+            editor.onChange();
+        }
+    }, [html, editor]);
+
     return (
         <div className="w-full flex-1">
-            <Slate editor={viewer} value={initialValue()}>
+            <Slate editor={editor} value={initialValue(html)}>
                 <div className="h-full min-h-[602px] border border-slate-300 p-5">
                     <Editable readOnly renderElement={renderElement} renderLeaf={renderLeaf} />
                 </div>

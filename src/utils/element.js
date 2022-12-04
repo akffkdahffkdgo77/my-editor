@@ -71,12 +71,14 @@ const Element = (props) => {
             return <Image {...props} />;
         case 'link':
             return <Link {...props} />;
-        default:
+        case 'paragraph':
             return (
                 <p className="paragraph" style={style} {...attributes}>
                     {children}
                 </p>
             );
+        default:
+            return children;
     }
 };
 

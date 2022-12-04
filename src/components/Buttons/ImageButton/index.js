@@ -5,7 +5,7 @@ import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSlateStatic } from 'slate-react';
 
-import CustomEditor from 'utils/editor';
+import CustomEditor from 'utils';
 
 export default function ImageButton() {
     const editor = useSlateStatic();

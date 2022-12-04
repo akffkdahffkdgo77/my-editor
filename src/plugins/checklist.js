@@ -1,7 +1,7 @@
 import { Editor, Element as SlateElement, Range, Point, Transforms } from 'slate';
 
 // A plugin is simply a function that takes an Editor object and returns it after it has augmented it in some way.
-const withChecklist = (editor) => {
+const withChecklists = (editor) => {
     const { deleteBackward } = editor;
 
     editor.deleteBackward = (...args) => {
@@ -32,4 +32,4 @@ const withChecklist = (editor) => {
     return editor;
 };
 
-export default withChecklist;
+export default withChecklists;

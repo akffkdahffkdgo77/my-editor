@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import { useCallback, useState } from 'react';
 
 import isHotkey, { isKeyHotkey } from 'is-hotkey';
 import { createEditor, Range, Transforms } from 'slate';
@@ -6,37 +7,21 @@ import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 
 import Toolbar from 'components/Toolbar';
-import withChecklist from 'plugin/checklist';
-import withImages from 'plugin/image';
-import withInlines from 'plugin/inline';
-import { HOTKEYS } from 'utils';
+import { withChecklists, withImages, withInlines } from 'plugins';
+import { HOTKEYS } from 'utils/constants';
 
-import CustomEditor from 'utils/editor';
+import CustomEditor from 'utils';
 import Element from 'utils/element';
 import Leaf from 'utils/leaf';
-import { serialize } from 'utils/serialize';
 
-export default function Editor() {
-    const [editor] = useState(() => withInlines(withImages(withChecklist(withHistory(withReact(createEditor()))))));
+export default function Editor({ onChange }) {
+    const [editor] = useState(() => withInlines(withImages(withChecklists(withHistory(withReact(createEditor()))))));
     const renderElement = useCallback((props) => <Element {...props} />, []);
     const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
-    // console.log(editor.children);
-
-    useEffect(() => {
-        // if (!rendered.current) {
-        //     rendered.current = true;
-        // Blocks -> HTML
-        if (editor.children) {
-            editor.children.map((ele) => serialize(ele));
-            // console.log('HTML', test.toString().replace(/,/g, ''));
-        }
-        // }
-    }, [editor.children]);
-
     return (
         <div className="flex-1 w-full">
-            <Slate editor={editor} value={[{ type: 'paragraph', children: [{ text: '' }] }]}>
+            <Slate editor={editor} value={[{ type: 'paragraph', children: [{ text: '' }] }]} onChange={onChange}>
                 <Toolbar />
                 <div className="h-full min-h-[500px] border border-slate-300 p-5 border-t-0">
                     <Editable

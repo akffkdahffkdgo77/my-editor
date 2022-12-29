@@ -90,8 +90,6 @@ Clone Coding Rich Text Editor.
 ## NPM Packages
 
 -   React v18
--   react-router-dom
--   tailwindcss
 -   Emoji
 
     -   emoji-mart
@@ -113,9 +111,12 @@ Clone Coding Rich Text Editor.
     -   slate-react
 
 -   utils
+
     -   escape-html
     -   is-hotkey
     -   is-url
+
+-   tailwindcss
 
 ## Code Convention
 

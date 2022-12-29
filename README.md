@@ -33,6 +33,60 @@ Clone Coding Rich Text Editor.
     -   Embed
     -   Paste HTML
 
+## Folder Structure
+
+```
+.
+├── app
+│   └── App.js
+├── components
+│   ├── Buttons
+│   │   ├── BlockButton
+│   │   │   └── index.js
+│   │   ├── ChecklistButton
+│   │   │   └── index.js
+│   │   ├── EmojiButton
+│   │   │   └── index.js
+│   │   ├── ImageButton
+│   │   │   └── index.js
+│   │   ├── LinkButton
+│   │   │   └── index.js
+│   │   ├── MarkButton
+│   │   │   └── index.js
+│   │   └── index.js
+│   ├── CheckListItem
+│   │   └── index.js
+│   ├── Image
+│   │   └── index.js
+│   ├── Link
+│   │   └── index.js
+│   └── Toolbar
+│       └── index.js
+├── index.js
+├── pages
+│   └── Home
+│       ├── components
+│       │   ├── Editor
+│       │   │   └── index.js
+│       │   └── Viewer
+│       │       └── index.js
+│       └── index.js
+├── plugins
+│   ├── checklist.js
+│   ├── image.js
+│   ├── index.js
+│   └── inline.js
+├── styles
+│   └── index.css
+└── utils
+    ├── constants.js
+    ├── deserialize.js
+    ├── element.js
+    ├── index.js
+    ├── leaf.js
+    └── serialize.js
+```
+
 ## NPM Packages
 
 -   React v18

@@ -37,26 +37,14 @@
 
   <h3>💻 Tech Stacks</h3>
   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/-slate-black?style=for-the-badge" alt="slate" />
   <br/>
   <img src="https://img.shields.io/badge/-emoji--mart-black?style=for-the-badge" alt="emoji-mart" />
-  <img src="https://img.shields.io/badge/-@emoji--mart/data-black?style=for-the-badge" alt="@emoji-mart/data" />
-  <img src="https://img.shields.io/badge/-@emoji--mart/react-black?style=for-the-badge" alt="@emoji-mart/react" />
-  <br/>
-  <img src="https://img.shields.io/badge/-@fortawesome/fontawesome--svg--core-black?style=for-the-badge" alt="@fortawesome/fontawesome-svg-core" />
-  <br/>
-  <img src="https://img.shields.io/badge/-@fortawesome/free--regular--svg--icons-black?style=for-the-badge" alt="@fortawesome/free-regular-svg-icons" />
-  <img src="https://img.shields.io/badge/-@fortawesome/free--solid--svg--icons-black?style=for-the-badge" alt="@fortawesome/free-solid-svg-icons" />
-  <img src="https://img.shields.io/badge/-@fortawesome/react--fontawesome-black?style=for-the-badge" alt="@fortawesome/react-fontawesome" />
-  <br/>
-  <img src="https://img.shields.io/badge/-slate-black?style=for-the-badge" alt="slate" />
-  <img src="https://img.shields.io/badge/-slate--history-black?style=for-the-badge" alt="slate-history" />
-  <img src="https://img.shields.io/badge/-slate--hyperscript-black?style=for-the-badge" alt="slate-hyperscript" />
-  <img src="https://img.shields.io/badge/-slate--react-black?style=for-the-badge" alt="slate-react" />
-  <br/>
   <img src="https://img.shields.io/badge/-escape--html-black?style=for-the-badge" alt="escape-html" />
   <img src="https://img.shields.io/badge/-is--hotkey-black?style=for-the-badge" alt="is-hotkey" />
   <img src="https://img.shields.io/badge/-is--url-black?style=for-the-badge" alt="is-url" />
   <br/>
+  <img src="https://img.shields.io/badge/-Font Awesome-black?style=for-the-badge" alt="Font Awesome" />
   <img src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="TailwindCSS" />
 
   <h3>🪄 Code Conventions</h3>

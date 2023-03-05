@@ -13,6 +13,7 @@
         "escape-html": "^1.0.3",
         "is-hotkey": "^0.2.0",
         "is-url": "^1.2.4",
+        "prop-types": "^15.8.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-scripts": "^5.0.1",
@@ -26,9 +27,9 @@
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "prettier": "prettier --write --config ./.prettierrc \"**/*.{ts,tsx}\"",
-        "lint": "eslint './src/**/*.{ts,tsx}'",
-        "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
+        "prettier": "prettier --write --config ./.prettierrc \"**/*.{js,jsx}\"",
+        "lint": "eslint './src/**/*.{js,jsx}'",
+        "lint:fix": "eslint --fix './src/**/*.{js,jsx}'"
     },
     "eslintConfig": {
         "extends": [

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSlate } from 'slate-react';
 
-import CustomEditor from 'utils';
+import CustomEditor from 'lib/slate/helpers/customEditor';
 
 export default function MarkButton({ format, icon }) {
     const editor = useSlate();

@@ -21,7 +21,12 @@ module.exports = {
         }
     },
     rules: {
-        'prettier/prettier': 'off',
+        'no-param-reassign': 'off',
+        'no-plusplus': 'off',
+        'react/jsx-props-no-spreading': 'off',
+        'no-nested-ternary': 'off',
+        'react/prop-types': 'off',
+        'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
         'import/order': [
             'error',
             {
@@ -33,12 +38,12 @@ module.exports = {
                         position: 'before'
                     },
                     {
-                        pattern: 'styles/**',
+                        pattern: 'lib/**',
                         group: 'internal',
-                        position: 'after'
+                        position: 'before'
                     },
                     {
-                        pattern: 'utils/**',
+                        pattern: 'styles/**',
                         group: 'internal',
                         position: 'after'
                     },
@@ -61,24 +66,6 @@ module.exports = {
                 },
                 warnOnUnassignedImports: true
             }
-        ],
-        'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
-        'import/no-extraneous-dependencies': 'off',
-        'react/function-component-definition': 'off',
-        'no-param-reassign': 'off',
-        'react/forbid-prop-types': 'off',
-        'react/jsx-no-useless-fragment': 'off',
-        'no-alert': 'off',
-        'react/jsx-props-no-spreading': 'off',
-        'no-return-assign': 'off',
-        'react/no-unstable-nested-components': ['error', { allowAsProps: true }],
-        'no-shadow': 'off',
-        'no-nested-ternary': 'off',
-        'no-unneeded-ternary': 'off',
-        'react/no-array-index-key': 'off',
-        'prefer-promise-reject-errors': 'off',
-        'global-require': 'off',
-        'no-restricted-syntax': 'off',
-        'react/prop-types': 'off'
+        ]
     }
 };

@@ -4,7 +4,7 @@ import Link from 'components/Link';
 
 // Slate DOC -> https://docs.slatejs.org/walkthroughs/03-defining-custom-elements
 // Define a React component renderer.
-const Element = (props) => {
+export default function Element(props) {
     const { attributes, children, element } = props;
 
     const style = { textAlign: element.align };
@@ -78,6 +78,4 @@ const Element = (props) => {
         default:
             return children;
     }
-};
-
-export default Element;
+}

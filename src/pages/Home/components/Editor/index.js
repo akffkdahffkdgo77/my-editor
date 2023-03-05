@@ -1,17 +1,18 @@
 import { useCallback, useState } from 'react';
 
 import isHotkey, { isKeyHotkey } from 'is-hotkey';
+import PropTypes from 'prop-types';
 import { createEditor, Range, Transforms } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 
-import Toolbar from 'components/Toolbar';
-import { withChecklists, withImages, withInlines } from 'plugins';
-import CustomEditor from 'utils';
+import Element from 'lib/slate/components/element';
+import Leaf from 'lib/slate/components/leaf';
+import CustomEditor from 'lib/slate/helpers/customEditor';
+import { withChecklists, withImages, withInlines } from 'lib/slate/plugins';
 
-import { HOTKEYS } from 'utils/constants';
-import Element from 'utils/element';
-import Leaf from 'utils/leaf';
+import Toolbar from 'components/Toolbar';
+import { HOTKEYS } from 'constants/data';
 
 export default function Editor({ onChange }) {
     const [editor] = useState(() => withInlines(withImages(withChecklists(withHistory(withReact(createEditor()))))));
@@ -53,13 +54,13 @@ export default function Editor({ onChange }) {
                                 }
                             }
 
-                            for (const hotkey in HOTKEYS) {
+                            Object.keys(HOTKEYS).forEach((hotkey) => {
                                 if (isHotkey(hotkey, event)) {
                                     event.preventDefault();
                                     const mark = HOTKEYS[hotkey];
                                     CustomEditor.toggleMark(editor, mark);
                                 }
-                            }
+                            });
                         }}
                     />
                 </div>
@@ -67,3 +68,7 @@ export default function Editor({ onChange }) {
         </div>
     );
 }
+
+Editor.propTypes = {
+    onChange: PropTypes.func.isRequired
+};

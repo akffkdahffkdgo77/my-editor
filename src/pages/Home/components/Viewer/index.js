@@ -4,11 +4,10 @@ import { createEditor } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
 
-import { withChecklists, withImages, withInlines } from 'plugins';
-
-import deserialize from 'utils/deserialize';
-import Element from 'utils/element';
-import Leaf from 'utils/leaf';
+import Element from 'lib/slate/components/element';
+import Leaf from 'lib/slate/components/leaf';
+import { withChecklists, withImages, withInlines } from 'lib/slate/plugins';
+import deserialize from 'lib/slate/utils/deserialize';
 
 function initialValue(html) {
     // HTML -> Blocks

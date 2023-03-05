@@ -4,7 +4,7 @@ import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSlateStatic } from 'slate-react';
 
-import CustomEditor from 'utils';
+import CustomEditor from 'lib/slate/helpers/customEditor';
 
 export default function ImageButton() {
     const editor = useSlateStatic();
@@ -38,7 +38,17 @@ export default function ImageButton() {
             >
                 <FontAwesomeIcon icon={faImage} />
             </button>
-            <input ref={inputRef} id="image" hidden accept="image/*" type="file" onChange={handleChange} onClick={(e) => (e.target.value = null)} />
+            <input
+                ref={inputRef}
+                id="image"
+                hidden
+                accept="image/*"
+                type="file"
+                onChange={handleChange}
+                onClick={(e) => {
+                    e.target.value = null;
+                }}
+            />
         </>
     );
 }

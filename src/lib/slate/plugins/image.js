@@ -1,4 +1,4 @@
-import CustomEditor from 'utils';
+import CustomEditor from 'lib/slate/helpers/customEditor';
 
 // A plugin is simply a function that takes an Editor object and returns it after it has augmented it in some way.
 const withImages = (editor) => {
@@ -12,16 +12,16 @@ const withImages = (editor) => {
         const { files } = data;
 
         if (files && files.length > 0) {
-            for (const file of files) {
+            for (let i = 0; i < files; i++) {
                 const reader = new FileReader();
-                const [mime] = file.type.split('/');
+                const [mime] = files[i].type.split('/');
 
                 if (mime === 'image') {
                     reader.onload = function onLoad() {
                         CustomEditor.toggleImage(editor, reader.result);
                     };
 
-                    reader.readAsDataURL(file);
+                    reader.readAsDataURL(files[i]);
                 }
             }
         } else {

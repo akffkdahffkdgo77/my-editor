@@ -1,6 +1,6 @@
 import { Editor, Transforms, Element as SlateElement, Range } from 'slate';
 
-import { LIST_TYPES, TEXT_ALIGN_TYPES } from 'utils/constants';
+import { LIST_TYPES, TEXT_ALIGN_TYPES } from 'constants/data';
 
 // Helper Functions
 // Define our own custom set of helpers.

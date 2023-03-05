@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
+import serialize from 'lib/slate/utils/serialize';
+
 import Editor from 'pages/Home/components/Editor';
 import Viewer from 'pages/Home/components/Viewer';
-
-import serialize from 'utils/serialize';
 
 export default function Home() {
     const [html, setHTML] = useState('<p></p>');
@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <div className="flex flex-col gap-y-5 justify-center items-center w-full min-h-screen p-10">
             <header className="h-[80px]">
-                <h1 className="font-bold text-4xl">Clone Coding Rich Text Editor</h1>
+                <h1 className="font-bold text-4xl">My Editor</h1>
             </header>
             <main className="w-full mx-auto min-h-[500px] h-full gap-2.5 flex justify-between  items-center ">
                 <Editor onChange={onChange} />

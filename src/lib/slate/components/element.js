@@ -1,6 +1,6 @@
-import CheckListItem from 'components/CheckListItem';
-import Image from 'components/Image';
-import Link from 'components/Link';
+import CheckListItem from 'components/molecules/CheckListItem';
+import Image from 'components/molecules/Image';
+import Link from 'components/molecules/Link';
 
 // Slate DOC -> https://docs.slatejs.org/walkthroughs/03-defining-custom-elements
 // Define a React component renderer.

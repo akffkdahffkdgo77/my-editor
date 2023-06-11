@@ -33,7 +33,7 @@ module.exports = {
                 groups: ['builtin', 'external', 'internal', ['parent', 'sibling'], 'index', 'object', 'type'],
                 pathGroups: [
                     {
-                        pattern: 'react',
+                        pattern: '{react*,react*/**}',
                         group: 'builtin',
                         position: 'before'
                     },
@@ -43,12 +43,7 @@ module.exports = {
                         position: 'before'
                     },
                     {
-                        pattern: 'styles/**',
-                        group: 'internal',
-                        position: 'after'
-                    },
-                    {
-                        pattern: '*.+(css|scss)',
+                        pattern: '{styles/**,*.+(css|scss)}',
                         patternOptions: {
                             dot: true,
                             nocomment: true,

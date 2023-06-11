@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import serialize from 'lib/slate/utils/serialize';
 
-import Editor from 'pages/Home/components/Editor';
-import Viewer from 'pages/Home/components/Viewer';
+import Editor from 'components/organisms/Editor';
+import Viewer from 'components/organisms/Viewer';
 
 export default function Home() {
     const [html, setHTML] = useState('<p></p>');

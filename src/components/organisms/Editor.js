@@ -11,7 +11,7 @@ import Leaf from 'lib/slate/components/leaf';
 import CustomEditor from 'lib/slate/helpers/customEditor';
 import { withChecklists, withImages, withInlines } from 'lib/slate/plugins';
 
-import Toolbar from 'components/Toolbar';
+import Toolbar from 'components/organisms/Toolbar';
 import { HOTKEYS } from 'constants/data';
 
 export default function Editor({ onChange }) {

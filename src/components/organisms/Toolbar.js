@@ -14,7 +14,13 @@ import {
     faStrikethrough
 } from '@fortawesome/free-solid-svg-icons';
 
-import { BlockButton, ChecklistButton, EmojiButton, ImageButton, LinkButton, MarkButton } from 'components/Buttons';
+import BlockButton from 'components/molecules/BlockButton';
+import ChecklistButton from 'components/molecules/ChecklistButton';
+import EmojiButton from 'components/molecules/EmojiButton';
+import ImageButton from 'components/molecules/ImageButton';
+import LinkButton from 'components/molecules/LinkButton';
+import MarkButton from 'components/molecules/MarkButton';
+import UnlinkButton from 'components/molecules/UnlinkButton';
 
 export default function Toolbar() {
     return (
@@ -42,6 +48,7 @@ export default function Toolbar() {
                 <ChecklistButton />
                 <ImageButton />
                 <LinkButton />
+                <UnlinkButton />
             </div>
         </div>
     );
